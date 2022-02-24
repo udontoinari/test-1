@@ -1,0 +1,9 @@
+{
+  "bin": { "test-cli": "index.js" },
+  "dependencies": { "minimist": "^1.2.5" },
+  "files": ["index.js"],
+  "name": "test-cli",
+  "scripts": { "start": "node index.js" },
+  "type": "module",
+  "version": "0.0.1"
+}
