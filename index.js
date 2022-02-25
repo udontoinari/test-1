@@ -63,7 +63,7 @@ if (argv.watch) {
   });
   watcher.on('ready', () => {
     // console.log(chalk.gray('Sass is watching for changes. Press Ctrl-C to stop.'));
-    console.log(chalk.gray('Watching images... Press Ctrl-C to stop.'));
+    console.log(chalk.gray('Watching images. Press Ctrl-C to stop.'));
   });
   watcher.on('all', (eventName, path) => {
     if (eventName == 'unlink') return;
