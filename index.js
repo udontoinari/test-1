@@ -26,6 +26,7 @@ const argv = minimist(process.argv.slice(2), {
 
 const pattern = argv._[0];
 const base = glob2base(glob(pattern));
+argv.dir = argv.dir || base;
 const config = fs.existsSync(argv.config) ? JSON.parse(fs.readFileSync(argv.config)) : {};
 const plugins = [];
 
