@@ -20,7 +20,7 @@
   "files": [
     "index.js"
   ],
-  "name": "imagemin-cli",
+  "name": "@udontoinari/imagemin-cli",
   "scripts": {
     "test": "node index.js \"src/**/*.{gif,jpg,png,svg}\" --dir dist"
   },
