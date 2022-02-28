@@ -57,7 +57,7 @@ const minify = async (file) => {
     const saved = original - result[0].data.length;
     const percent = saved / original * 100;
     const message = `Minified: ${output} (saved ${prettyBytes(saved)} - ${percent.toFixed(1)}%)`;
-    console.log(chalk.blue(message));
+    console.log(chalk.green(message));
   }
 };
 
