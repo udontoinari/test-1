@@ -26,9 +26,7 @@ const argv = minimist(process.argv.slice(2), {
 
 const pattern = argv._[0];
 const base = glob2base(glob(pattern));
-const config = fs.existsSync(argv.config)
-  ? JSON.parse(fs.readFileSync(argv.config, 'utf8'))
-  : {};
+const config = fs.existsSync(argv.config) ? JSON.parse(fs.readFileSync(argv.config)) : {};
 const plugins = [];
 
 for (const [key, value] of Object.entries(config)) {
@@ -48,7 +46,11 @@ const minify = async (path) => {
       destination: dirname(output),
       glob: false,
       plugins: plugins
+    }).catch(error => {
+      console.error(chalk.red(error));
     });
+    if (!result) continue;
+
     const { size: original } = fs.statSync(path);
     const saved = original - result[0].data.length;
     const percent = saved / original * 100;
@@ -60,9 +62,6 @@ const minify = async (path) => {
 if (argv.watch) {
   const watcher = chokidar.watch(pattern, {
     ignoreInitial: true
-  });
-  watcher.on('ready', () => {
-    console.log(chalk.gray('Watching images. Press Ctrl-C to stop.'));
   });
   watcher.on('all', (eventName, path) => {
     if (eventName == 'unlink') return;
